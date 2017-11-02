@@ -93,7 +93,13 @@ runtime_plot3 <- ggplot(runtime_dataframe, aes(x=k, y = runtime, group=n, col = 
 runtime_plot3
 
 save(runtime_dataframe, file="data.Rda")
-ggsave(filename="timothy_lee.png", width=16, height = 9)
+
+
+# Most Useful Plot
+ggsave(filename="timothy_lee.png", width=16, height = 9) 
+
+
+# Optional Plots for Further Information
 ggsave(filename="timothy_lee2.png", width=16, height = 9)
 ggsave(filename="timothy_lee3.png", width=16, height = 9)
 
@@ -103,15 +109,15 @@ ggsave(filename="timothy_lee3.png", width=16, height = 9)
 # Runtime complexity ------------------------------------------------------
 # Can you write out the rough Big-O runtime algorithmic complexity as a function
 # of:
-# -n: number of points in training set; as n increases, runtime increases linearly
-# O(n)
+# -n: number of points in training set: as n increases, runtime increases linearly
+
+# -k: number of neighbors to consider: as k increases, runtime stays the same, so it's constant across increasing k values
+# However,the horizontal lines of k are stacked on top of each other (`timothy_lee3.png`), signifying that increasing n
+# will increase the runtime in a linear fashion. 
+
+# -d: number of predictors used? In this case d is fixed at 3 but should exhibit same behavior as the k description above
 
 
-# -k: number of neighbors to consider; as k increases, runtime stays the same / constant
-# O(c) 
-
-
-# -d: number of predictors used? In this case d is fixed at 3 / constant
-# O(c)
-
+# Based on the above logic, I would write the Big-O runtime algorithmic complexity as
+# f(n) = O(nk + nd)
 
